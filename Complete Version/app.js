@@ -3,19 +3,21 @@
 
 document.addEventListener('DOMContentLoaded',() => {
 	var i;
+	// This for loop creates a div and adds it inside "maingrid", repeating this 200 times.
 	for(i = 0; i < 200; i++){
 		var block = document.createElement("div")
 		document.getElementById("maingrid").appendChild(block)
 	}
+	// This for loop creates a div, gives it the class "taken", and adds it inside "maingrid", repeating this 10 times.
 	for(i = 0; i < 10; i++){
 		var block = document.createElement("div")
 		block.className = 'taken'
 		document.getElementById("maingrid").appendChild(block)
 	}
+	// This for loop creates a div and adds it inside "minigrid", repeating this 16 times.
 	for(i = 0; i < 16; i++){
 		var block = document.createElement("div")
 		document.getElementById("minigrid").appendChild(block)
-		console.log(i)
 	}
 	const grid = document.querySelector('#maingrid')
 	let squares = Array.from(document.querySelectorAll('#maingrid div'))

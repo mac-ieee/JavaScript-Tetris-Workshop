@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 
-/*This formats the div with the id "grid" which is our game's main display.*/
+/*This formats the div with the id "maingrid" which is our game's main display.*/
 #maingrid {
 	/*20 rows X 20px per square*/
 	height: 400px;
@@ -12,16 +12,16 @@
 	/*background colour for game*/
 	background-color: #474342;
 	/*Normally, one div would display on each line and take up the whole line.
-	These two lines allow us to have each div inside "grid" display next to each other.
+	These two lines allow us to have each div inside "maingrid" display next to each other.
 	A new line starts when the divs occupy all of the 200px width.*/
 	display: flex;
 	flex-wrap: wrap;
 }
 
-/*This formats the divs inside the div with the id "grid".*/
-/*.grid div is like find "grid", then format elements inside it which are div*/
+/*This formats the divs inside the div with the id "maingrid".*/
+/*#maingrid div finds the "maingrid", then format elements inside it which are div*/
 #maingrid div {
-	/*Each div inside grid represents one square with a height and width of 20px.*/
+	/*Each div inside "maingrid" represents one square with a height and width of 20px.*/
 	width: 20px;
 	height: 20px;
 }
@@ -43,7 +43,7 @@
 
 /*This formats the divs inside the div with the id "minigrid".*/
 #minigrid div{
-	/*Each div inside grid represents one square with a height and width of 20px.*/
+	/*Each div inside "minigrid" represents one square with a height and width of 20px.*/
 	width: 20px;
 	height: 20px;
 }
@@ -51,7 +51,7 @@
 
 #container{
 	/*Allows divs to be next to each other instead of each occupying one line.
-	The "grid" div would normally be on top of the "minigrid" div.
+	The "maingrid" div would normally be on top of the "minigrid" div.
 	This allows them to appear side by side*/
 	display: flex;
 }

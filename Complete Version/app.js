@@ -1,7 +1,17 @@
+// SECTION 1: HTML & CSS
+
+// SECTION 2: JAVASCRIPT BASICS (VARIABLES, LOOPS, ARRAYS, FUNCTIONS)
+
+
+
 
 
 
 document.addEventListener('DOMContentLoaded',() => {
+
+
+// SECTION X: CREATING DIVS IN JAVASCRIPT
+
 	var i;
 	// This for loop creates a div and adds it inside "maingrid", repeating this 200 times.
 	for(i = 0; i < 200; i++){
@@ -19,6 +29,11 @@ document.addEventListener('DOMContentLoaded',() => {
 		var block = document.createElement("div")
 		document.getElementById("minigrid").appendChild(block)
 	}
+
+
+
+
+// VARIABLES
 	const grid = document.querySelector('#maingrid')
 	let squares = Array.from(document.querySelectorAll('#maingrid div'))
 	const width = 10
@@ -28,6 +43,11 @@ document.addEventListener('DOMContentLoaded',() => {
 	let timerId
 	let score = 0
 
+
+
+
+
+// SECTION X: CREATING TETROMINOS
 
 	// Tetrominoes
 	const iTetro = [
@@ -79,8 +99,17 @@ document.addEventListener('DOMContentLoaded',() => {
 	[1, width, width + 1, 2*width]
 	]
 
+
+	// One list for all of your tetrominos and another list for all of their colours
 	const tetros = [iTetro, oTetro, tTetro, jTetro, lTetro, sTetro, zTetro]
 	const colours = ['cyan','yellow','magenta','blue','orange','lime','red']
+
+
+
+
+
+
+// SECTION X: DRAW(), UNDRAW(), FREEZE()
 
 	// halfway
 	let currentPosition = 4
@@ -97,14 +126,12 @@ document.addEventListener('DOMContentLoaded',() => {
 
 	function draw() {
 		current.forEach(index=>{
-			squares[currentPosition + index].classList.add('tetro')
 			squares[currentPosition + index].classList.add(colour)
 		})
 	}
 
 	function undraw() {
 		current.forEach(index=>{
-			squares[currentPosition + index].classList.remove('tetro')
 			squares[currentPosition + index].classList.remove(colour)
 		})
 	}
@@ -127,6 +154,19 @@ document.addEventListener('DOMContentLoaded',() => {
 		}
 	}
 
+
+
+
+
+
+
+
+
+
+// SECTION X: KEY PRESSES
+
+
+
 	function moveDown() {
 		if (!display){
 			miniDraw()
@@ -134,7 +174,6 @@ document.addEventListener('DOMContentLoaded',() => {
 		}
 		undraw()
 		currentPosition += width
-		draw()
 		freeze()
 	}
 
@@ -176,11 +215,14 @@ document.addEventListener('DOMContentLoaded',() => {
 
 	function rotate() {
 		undraw()
-		currentRotation++
+		const atRight = current.some(index => (currentPosition + index)%width === width - 1)
+		const atLeft = current.some(index => (currentPosition + index)%width === 0)
+		if (!atRight && !atLeft){
+			currentRotation++
+		} 
 		if(currentRotation == current.length){
 			currentRotation = 0
 		}
-		// currentRotation = (currentRotation + 1)%(current.length)
 		current = tetros[random][currentRotation]
 		draw()
 	}
@@ -209,6 +251,17 @@ document.addEventListener('DOMContentLoaded',() => {
 
 	// timerID = setInterval(moveDown,100)
 
+
+
+
+
+
+
+
+
+
+
+// SECTION X: NEXT UP DISPLAY
 
 	// Mini Grid
 	const mwidth = 4
@@ -252,6 +305,17 @@ document.addEventListener('DOMContentLoaded',() => {
 			music.volume = 0.4
 		}
 	})
+
+
+
+
+
+
+
+
+
+// SECTION X: SCORING THE GAME
+
 
 
 

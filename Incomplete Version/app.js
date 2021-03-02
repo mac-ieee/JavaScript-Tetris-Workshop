@@ -105,14 +105,12 @@ document.addEventListener('DOMContentLoaded',() => {
 
 	function draw() {
 		current.forEach(index=>{
-			squares[currentPosition + index].classList.add('tetro')
 			squares[currentPosition + index].classList.add(colour)
 		})
 	}
 
 	function undraw() {
 		current.forEach(index=>{
-			squares[currentPosition + index].classList.remove('tetro')
 			squares[currentPosition + index].classList.remove(colour)
 		})
 	}
@@ -147,6 +145,19 @@ document.addEventListener('DOMContentLoaded',() => {
 	}
 
 
+
+
+
+
+
+
+
+
+
+
+// SECTION
+
+
 	function moveLeft() {
 		undraw()
 		const atLeft = current.some(index => (currentPosition + index)%width === 0)
@@ -178,13 +189,16 @@ document.addEventListener('DOMContentLoaded',() => {
 	function moveDown() {
 		undraw()
 		currentPosition += width
-		draw()
 		freeze()
 	}
 
 	function rotate() {
 		undraw()
-		currentRotation++
+		const atRight = current.some(index => (currentPosition + index)%width === width - 1)
+		const atLeft = current.some(index => (currentPosition + index)%width === 0)
+		if (!atRight && !atLeft){
+			currentRotation++
+		} 
 		if(currentRotation == current.length){
 			currentRotation = 0
 		}
@@ -216,6 +230,14 @@ document.addEventListener('DOMContentLoaded',() => {
 	document.addEventListener('keyup',control)
 
 	// timerID = setInterval(moveDown,100)
+
+
+
+
+
+
+
+// SECTION
 
 
 	// Mini Grid
@@ -262,6 +284,17 @@ document.addEventListener('DOMContentLoaded',() => {
 	})
 
 
+
+
+
+
+
+
+
+
+
+
+// SECTION
 
 	function addScore() {
 		var i

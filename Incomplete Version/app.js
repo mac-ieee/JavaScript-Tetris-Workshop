@@ -85,6 +85,8 @@ document.addEventListener('DOMContentLoaded',() => {
 	[1, width, width + 1, 2*width]
 	]
 
+
+	// One list for all of your tetrominos and another list for all of their colours
 	const tetros = [iTetro, oTetro, tTetro, jTetro, lTetro, sTetro, zTetro]
 	const colours = ['cyan','yellow','magenta','blue','orange','lime','red']
 

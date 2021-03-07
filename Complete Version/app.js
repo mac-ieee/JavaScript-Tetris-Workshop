@@ -299,7 +299,6 @@ document.addEventListener('DOMContentLoaded',() => {
 			currentRotation = 0
 			colour = colours[random]
 			miniDraw()
-			draw()
 			addScore()
 			gameOver()
 			
@@ -307,7 +306,12 @@ document.addEventListener('DOMContentLoaded',() => {
 	}
 
 
-
+	function moveDown() {
+		undraw()
+		currentPosition += width
+		draw()
+		freeze()
+	}
 
 
 
@@ -319,12 +323,7 @@ document.addEventListener('DOMContentLoaded',() => {
 
 
 
-	function moveDown() {
-		undraw()
-		currentPosition += width
-		draw()
-		freeze()
-	}
+	
 
 
 	function moveLeft() {

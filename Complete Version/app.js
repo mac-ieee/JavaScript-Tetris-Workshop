@@ -189,7 +189,9 @@ document.addEventListener('DOMContentLoaded',() => {
 	let timerId
 	let score = 0
 
-
+	const musicMaster = document.querySelector('#musicMaster')
+    	const volU = document.querySelector('#volU')
+    	const volD = document.querySelector('#volD')
 
 
 
@@ -444,6 +446,7 @@ document.addEventListener('DOMContentLoaded',() => {
 
 	startButton.addEventListener('click', () =>{
 		var music = document.getElementById("music")
+		music.volume = 0.3
 		if(timerId){
 			clearInterval(timerId)
 			timerId = null
@@ -451,8 +454,10 @@ document.addEventListener('DOMContentLoaded',() => {
 		}
 		else {
 			timerId = setInterval(moveDown,350)
-			music.play();
-			music.volume = 0.3
+			if(!musicOff){
+                		music.play();
+            		}
+			
 		}
 		if(!started){
 			moveDown()
@@ -463,7 +468,25 @@ document.addEventListener('DOMContentLoaded',() => {
 	})
 
 
+	var musicOff = false;
+	musicMaster.addEventListener('click', () =>{
+		if(!musicOff){
+	    		musicOff = true;
+	    		music.pause();
+		}
+		else{
+	    		musicOff = false;
+	    		music.play();
+		}
+    	})
 
+	volU.addEventListener('click', () =>{
+		music.volume += 0.1
+	})
+
+	volD.addEventListener('click', () =>{
+		music.volume -= 0.1
+	})
 
 
 

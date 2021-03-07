@@ -283,12 +283,17 @@ document.addEventListener('DOMContentLoaded',() => {
 			currentPosition = 4
 			currentRotation = 0
 			colour = colours[random]
-			draw()
 			// miniDraw()
 			// addScore()
 			// gameOver()
 			
 		}
+	}
+	
+	function moveDown() {
+		undraw()
+		currentPosition += width
+		freeze()
 	}
 
 
@@ -328,11 +333,6 @@ document.addEventListener('DOMContentLoaded',() => {
 		freeze()
 	}
 
-	function moveDown() {
-		undraw()
-		currentPosition += width
-		freeze()
-	}
 
 	function rotate() {
 		undraw()

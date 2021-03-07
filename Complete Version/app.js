@@ -1,18 +1,164 @@
+// _________________________________________________________________________________________________________________________
 // SECTION 1: HTML & CSS
 
+
+
+// _________________________________________________________________________________________________________________________
 // SECTION 2: JAVASCRIPT BASICS (VARIABLES, LOOPS, ARRAYS, FUNCTIONS)
 
+// VARIABLES (VAR, LET, CONST)
+// if a variable is not inside a function, you can consider it globally defined
+
+// VAR
+// a variable defined using var is scoped to the function it is in
+
+// LET & CONST
+// a variable defined using let or const is scoped to the block it is in (a block is {})
+
+// CONST
+// variable using const cannot be reassigned, but items in a const array can
+
+{
+	var x1 = "var"
+	let x2 = "let"
+	const x3 = "const"
+	// x1 = "changed var" 
+	// x2 = "changed let"
+	// x3 = "changed const"
+	// console.log(x1)
+	// console.log(x2)
+	// console.log(x3)
+}
+// console.log(x1)
+// console.log(x2)
+// console.log(x3)
 
 
+
+// LOOPS (FOR, WHILE)
+
+// a "while" loop takes a conditional as a parameter and runs as long as the condition is true
+// you can read it as "while () is true, do {}"
+// if you're not careful with while loops, they can run indefinitely which can cause problems
+let i
+i = 100
+while(i<110){
+	console.log(i)
+	i++
+}
+
+// to increment the variable i:
+// i++ increases i by 1
+// i-- decreases i by 1
+// i+=n increases i by some number n 
+// i-=n decreases i by some number n
+// (e.g. i+=5 would increase i by 5 each increment)
+
+
+// a "for" loop has three parameters: a start point, a conditional, and an increment
+// the one below starts at i = 0, continues until the conditional is no longer true, and increments by 1
+for(i = 0; i < 10; i++){
+	console.log(i)
+}
+
+
+// ARRAYS AND INDEXING
+// arrays are objects which can hold multiple pieces of data and different types of data
+// indexing an array starts at 0
+// i.e. to get the first item of an array named x, you would have to use x[0]
+// to access the second item of the array named x, you would have to use x[1] and so forth
+
+// this array is declared using const so you cannot reassign it, but you can change items inside the array
+// a built-in method is of an array x is x.length which returns the number of items in the array
+// this "for" loop logs every item in the array
+const arr = ["It's","raining","dogs","and","cats!",3,8,1998]
+console.log(arr[2])
+for (i = 0; i<arr.length; i++){
+	console.log(arr[i])
+}
+// here we change the 3rd item and the 5th item of the array
+arr[2] = "snakes"
+arr[4] = "ladders!"
+for (i = 0; i<arr.length; i++){
+	console.log(arr[i])
+}
+
+// EXERCISE
+// A) try declaring an array with the items "I'm", "making", "Tetris", "today", "!"
+// B) first, log only the word "Tetris" in the console
+// C) then, change "I'm" to "(your name)'s" 
+// (i.e. my name is Calvin so I would change "I'm" to "Calvin's")
+// D) lastly, make a for loop to log the entire array
+
+let today = ["I'm", "making", "Tetris", "today", "!"]
+console.log(today[2])
+today[0] = "Calvin's"
+for (i = 0; i<today.length; i++){
+	console.log(today[i])
+}
+
+
+
+
+
+// _________________________________________________________________________________________________________________________
+// SECTION 3: EDITING HTML IN JAVASCRIPT
+
+
+// THE HTML DOM
+// when JavaScript is running through an HTML file, the HTML document can be accessed in JavaScript using the variable "document"
+
+// ACCESSING AN ELEMENT
+// to access an element, you can use document.getElementById("id_name")
+// where id_name is the ID of the element you are trying to access
+// e.g. element with id = "goodstuff"
+// document.getElementById("goodstuff")
+
+// CREATING AN ELEMENT
+// to create an element, you can use document.createElement("element_type")
+// where element_type is the type of element you want to create
+// e.g. to create a div
+// document.createElement("div")
+
+// APPENDING OR REMOVING AN ELEMENT
+// to add an element A to another element B in the document, you can use elementB.appendChild(elementA)
+// where elementA is the element to be added and elementB is the element being added to
+// similarly to remove an element, elementB.removeChild(elementA)
+// for example:
+// var elementB = document.getElementById("elementB")
+// var elementA = document.createElement("div")
+// elementB.appendChild(elementA)
+
+// ADDING OR REMOVING CLASSES
+// to add or remove a class to some element X
+// elementX.classList.add("class_name")
+// elementX.classList.remove("class_name")
+// where class_name is the class
+// e.g. to add the class "villain" to the element joker
+// joker.classList.add("villain")
+
+// EVENT LISTENERS
+// event listeners execute the code within the block only when a specified event occurs on the element it is attached to
+
+// 'DOMContentLoaded' is the most common event and refers to when the contents of the HTML document have finished loading/displaying
+// document.addEventListener('DOMContentLoaded',() => {code})
+// this event listener is attached to the whole document itself
+
+// 'click' is another common event and refers to when the attached element is clicked
+// e.g. to make code run when elementA is clicked:
+// elementA.addEventListener('click',() => {code})
+
+
+// there are a lot of methods associated with the DOM so for more information, you can visit:
+// https://www.w3schools.com/js/js_htmldom_document.asp
 
 
 
 document.addEventListener('DOMContentLoaded',() => {
 
 
-// SECTION X: CREATING DIVS IN JAVASCRIPT
 
-	var i;
+	// var i;
 	// This for loop creates a div and adds it inside "maingrid", repeating this 200 times.
 	for(i = 0; i < 200; i++){
 		var block = document.createElement("div")
@@ -47,7 +193,7 @@ document.addEventListener('DOMContentLoaded',() => {
 
 
 
-// SECTION X: CREATING TETROMINOS
+// SECTION 4: CREATING TETROMINOS
 
 	// Tetrominoes
 	const iTetro = [
@@ -109,9 +255,11 @@ document.addEventListener('DOMContentLoaded',() => {
 
 
 
-// SECTION X: DRAW(), UNDRAW(), FREEZE()
+// SECTION 5: DRAW(), UNDRAW(), FREEZE()
 
-	// halfway
+	// the width is 10 so halfway through the screen is 5
+	// since we are indexing, the position becomes 4
+	// (remember, x[4] accesses the 5th item of the array x)
 	let currentPosition = 4
 	let currentRotation = 0
 
@@ -122,6 +270,7 @@ document.addEventListener('DOMContentLoaded',() => {
 	// current is an array of indexes for each square in the tetromino
 	let current = tetros[random][currentRotation]
 	let display = false
+	let started = false
 
 
 	function draw() {
@@ -145,6 +294,7 @@ document.addEventListener('DOMContentLoaded',() => {
 			nextRandom = Math.floor(Math.random()*tetros.length)
 			current = tetros[random][currentRotation]
 			currentPosition = 4
+			currentRotation = 0
 			colour = colours[random]
 			miniDraw()
 			draw()
@@ -163,17 +313,14 @@ document.addEventListener('DOMContentLoaded',() => {
 
 
 
-// SECTION X: KEY PRESSES
+// SECTION 6: KEY PRESSES
 
 
 
 	function moveDown() {
-		if (!display){
-			miniDraw()
-			display = true
-		}
 		undraw()
 		currentPosition += width
+		draw()
 		freeze()
 	}
 
@@ -190,6 +337,7 @@ document.addEventListener('DOMContentLoaded',() => {
 			currentPosition +=1
 		}
 		draw()
+		freeze()
 	}
 
 	function moveRight() {
@@ -204,14 +352,10 @@ document.addEventListener('DOMContentLoaded',() => {
 			currentPosition -=1
 		}
 		draw()
-	}
-
-	function moveDown() {
-		undraw()
-		currentPosition += width
-		draw()
 		freeze()
 	}
+
+
 
 	function rotate() {
 		undraw()
@@ -225,25 +369,28 @@ document.addEventListener('DOMContentLoaded',() => {
 		}
 		current = tetros[random][currentRotation]
 		draw()
+		freeze()
 	}
 
 
 	function control(arrow){
-		// left arrow or a
-		if(arrow.keyCode === 37 || arrow.keyCode === 65){
-			moveLeft()
-		}
-		// right arrow or d
-		else if(arrow.keyCode === 39 || arrow.keyCode === 68){
-			moveRight()
-		}
-		// up arrow or w
-		else if(arrow.keyCode === 38 || arrow.keyCode === 87){
-			rotate()
-		}
-		// down arrow or s
-		else if(arrow.keyCode === 40 || arrow.keyCode === 83){
-			moveDown()
+		if(timerId){
+			// left arrow or a
+			if(arrow.keyCode === 37 || arrow.keyCode === 65){
+				moveLeft()
+			}
+			// right arrow or d
+			else if(arrow.keyCode === 39 || arrow.keyCode === 68){
+				moveRight()
+			}
+			// up arrow or w
+			else if(arrow.keyCode === 38 || arrow.keyCode === 87){
+				rotate()
+			}
+			// down arrow or s
+			else if(arrow.keyCode === 40 || arrow.keyCode === 83){
+				moveDown()
+			}
 		}
 	}
 	// passes function 'control' to event listener on a keypress
@@ -260,8 +407,8 @@ document.addEventListener('DOMContentLoaded',() => {
 
 
 
-
-// SECTION X: NEXT UP DISPLAY
+// (SECTION 7 IS BELOW SECTION 8)
+// SECTION 8: NEXT UP DISPLAY
 
 	// Mini Grid
 	const mwidth = 4
@@ -289,6 +436,12 @@ document.addEventListener('DOMContentLoaded',() => {
 		})
 	}
 
+
+
+
+// SECTION 7: START/PAUSE BUTTON AND TIMER ID
+
+
 	startButton.addEventListener('click', () =>{
 		var music = document.getElementById("music")
 		if(timerId){
@@ -297,12 +450,15 @@ document.addEventListener('DOMContentLoaded',() => {
 			music.pause();
 		}
 		else {
-			timerId = setInterval(moveDown,300)
+			timerId = setInterval(moveDown,350)
+			music.play();
+			music.volume = 0.3
+		}
+		if(!started){
+			moveDown()
+			started = true
 			nextRandom = Math.floor(Math.random()*tetros.length)
 			miniDraw()
-			draw()
-			music.play();
-			music.volume = 0.4
 		}
 	})
 
@@ -350,6 +506,8 @@ document.addEventListener('DOMContentLoaded',() => {
 			gameEnd.innerHTML = 'GAME OVER!!!'
 			// scoreDisplay.innerHTML = ''
 			clearInterval(timerId)
+			timerId = null
+			music.pause();
 		}
 	}
 

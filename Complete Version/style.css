@@ -95,22 +95,29 @@ h3 {
 /*Colours for each tetromino*/
 .cyan {
 	background-color: #4de3e3;
+	box-shadow:inset 0px 0px 0px 1px #212224;
 }
 .yellow{
 	background-color: #f0cc1a;
+	box-shadow:inset 0px 0px 0px 1px #212224;
 }
 .magenta{
 	background-color: #d111ce;
+	box-shadow:inset 0px 0px 0px 1px #212224;
 }
 .blue{
 	background-color: #1821d9;
+	box-shadow:inset 0px 0px 0px 1px #212224;
 }
 .orange{
 	background-color: #f2930f;
+	box-shadow:inset 0px 0px 0px 1px #212224;
 }
 .lime{
 	background-color: #1bcf0e;
+	box-shadow:inset 0px 0px 0px 1px #212224;
 }
 .red{
 	background-color: #cf180e;
+	box-shadow:inset 0px 0px 0px 1px #212224;
 }

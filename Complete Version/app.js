@@ -266,8 +266,9 @@ document.addEventListener('DOMContentLoaded',() => {
 	let currentRotation = 0
 
 	let random = Math.floor(Math.random()*tetros.length)
-	let nextRandom = Math.floor(Math.random()*tetros.length)
 	let colour = colours[random]
+	// SECTION 8 VARIABLES (nextRandom AND nextColour)
+	let nextRandom = Math.floor(Math.random()*tetros.length)
 	let nextColour = colours[nextRandom]
 	// current is an array of indexes for each square in the tetromino
 	let current = tetros[random][currentRotation]
@@ -411,28 +412,61 @@ document.addEventListener('DOMContentLoaded',() => {
 // (SECTION 7 IS BELOW SECTION 8)
 // SECTION 8: NEXT UP DISPLAY
 
-	// Mini Grid
+
+
+
+
+	// MINI GRID
+	// similar to how we made the tetrominos for the main grid, we can make the tetrominos for the mini grid
+	// however, since the tetrominos in the mini grid don't rotate we can just put one orientation
+	// also, instead of width, which is 10, we need to use a new width of 4 for the mini grid
 	const mwidth = 4
-	const miTetro = [1, mwidth + 1, 2*mwidth + 1, 3*mwidth + 1]
+	// EXERCISE
+	// make the O and T tetrominos!
 	const moTetro = [0, 1, mwidth, mwidth + 1]
 	const mtTetro = [mwidth + 1, 2*mwidth, 2*mwidth + 1, 2*mwidth + 2]
+
+	// the rest of the tetrominos have been made for you
+	const miTetro = [1, mwidth + 1, 2*mwidth + 1, 3*mwidth + 1]
 	const mjTetro = [1, mwidth + 1, 2*mwidth, 2*mwidth + 1]
 	const mlTetro = [1, mwidth + 1, 2*mwidth + 1, 2*mwidth + 2]
 	const msTetro = [1, 2, mwidth, mwidth + 1]
 	const mzTetro = [0, 1, mwidth + 1, mwidth + 2]
 	const mtetros = [miTetro, moTetro, mtTetro, mjTetro, mlTetro, msTetro, mzTetro]
+	// EXERCISE
+	// can you figure out how to extract the minigrid and the squares in the minigrid from the HTML document?
 	const miniGrid = document.querySelector('#minigrid')
 	let miniSquares = Array.from(document.querySelectorAll('#minigrid div'))
+
+	// NEXT RANDOM
+	// originally we had: let random = Math.floor(Math.random()*tetros.length) 
+	// and let colour = colours[random]
+	// to show the next tetromino we need to know the random number that comes next
+	// to do this we can use: let nextRandom = Math.floor(Math.random()*tetros.length) 
+	// and let nextColour = colours[nextRandom]
+	// then, in our freeze function we can assign random to the next random number instead of generating a new number
+	// like this: random = nextRandom
+	// and we still need to generate the next random number: nextRandom = Math.floor(Math.random()*tetros.length)
 	let next = mtetros[nextRandom]
+
+	// UNDRAW() AND DRAW()
+	// undraw() removes the colour from the each square
+	// draw() adds colour to the squares at which have the indexes in the tetromino
+
+	// MINIDRAW
+	// each time we have a new tetromino, we need to undraw the previous tetromino and draw the next tetromino
+	// here we combine the undraw() and draw() functions to make miniDraw()
+	// after we undraw a tetromino, we need to update the tetronimo and colour to the next tetromino
+	// then, we can draw it
+	// we can put this function in freeze() so that when a tetromino hits the bottom, we will update the Next Up display
+	
 	function miniDraw() {
 		next.forEach(index=>{
-			miniSquares[index].classList.remove('mtetro')
 			miniSquares[index].classList.remove(nextColour)
 		})
 		next = mtetros[nextRandom]
 		nextColour = colours[nextRandom]
 		next.forEach(index=>{
-			miniSquares[index].classList.add('mtetro')
 			miniSquares[index].classList.add(nextColour)
 		})
 	}
@@ -441,6 +475,72 @@ document.addEventListener('DOMContentLoaded',() => {
 
 
 // SECTION 7: START/PAUSE BUTTON AND TIMER ID
+
+
+// in this section, we will use two built-in functions: setInterval() and clearInterval()
+
+
+// SETINTERVAL()
+// the function setInterval() has two parameters, a function and a number representing milliseconds
+// you would input the function and milliseconds like this: setInterval(function, milliseconds)
+// using setInterval() starts a continued function call where every number of milliseconds the input function is executed
+// e.g. for some function named playAlarm() that plays an alarm and 2000 milliseconds
+// setInterval(playAlarm,2000) would play an alarm every 2000 milliseconds, or every 2 seconds (1000 milliseconds = 1 second)
+// setInterval() returns the id of the timer that you set
+// to stop this continued function call, you would use clearInterval()
+
+
+// CLEARINTERVAL()
+// the function clearInterval() has one parameter, the id of the timer returned by setInterval()
+// to use this, we initialize setInterval() in a variable
+// then we use variable in clearInterval()
+// e.g. using the playAlarm() example, initializing the variable time starts playing the alarm every 2 seconds, clearInterval() stops the timer
+// var timer = setInterval(playAlarm,2000)
+// clearInterval(timer)
+
+
+// STARTBUTTON
+// to get the start button from the HTML document, we can use: const startButton = document.querySelector('#startButton')
+// this retrives the element with the id "startButton"
+// then, we can add an event listener which will execute a function every time the element is clicked
+// note that here you see ()=>{}
+// this is the same as declaring a function as function(){}
+// once the button is clicked, we want to use setInterval() and moveDown() to start the game
+// we initialize setInterval() to the variable timerId so we can clear it later
+// since we also want to be able to pause the game from the same button, we add an if statement so that if the game is already running, we clear timerId
+// here we can use if(timerId){} since a variable that is not undefined or 0 returns True which means the code in the if statement will run
+
+
+// BOOLEANS(TRUE OR FALSE)
+// in JavaScript, certain values will return false when we evaluate them as true or false
+// if we initialize a variable x, the following will all return false: x, x=0, x=null, x="", x=false
+// x is undefined by itself, null is equivalent to 0 and both represent false, an empty string has no value and is false
+// there are also statements using "==", ">", and "<"
+// these represent equal to, greater than, and less than
+// e.g. 3 == (2+1) will return true
+// e.g. 3 > 4 will return false
+// e.g. 3 < 4 will return true
+// "!"" represents not
+// e.g. !true will return false
+// e.g. !(3<4) will return false
+
+
+// TIMERID
+// timerId will return true if it has a value
+// it is being used to store the timer id of setInterval() so it will have a value if the game is running
+
+
+// PAUSE
+// if timerId is true, which means the game is running, if(timerId){} will execute
+// we will clearInterval(timerId) so that moveDown() is no longer running every x milliseconds (x being whatever you set the number to)
+// then, we will set timerId to false so that the next time the start/pause button is clicked the game starts again
+// remember, null is the same as false in this case
+// if timerId is not true, then the if statement moves to else{}
+// in else{} we set timerId to setInterval() again to resume the game
+
+
+// MUSIC
+// we can also pause and play the music when the game pauses and resumes
 
 
 	startButton.addEventListener('click', () =>{
@@ -492,7 +592,7 @@ document.addEventListener('DOMContentLoaded',() => {
 
 
 
-// SECTION X: SCORING THE GAME
+// SECTION 9: SCORING THE GAME
 
 
 

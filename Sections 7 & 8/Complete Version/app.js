@@ -300,8 +300,13 @@ document.addEventListener('DOMContentLoaded',() => {
 			currentRotation = 0
 			colour = colours[random]
 			miniDraw()
+<<<<<<< HEAD
+			// addScore()
+			// gameOver()
+=======
 			addScore()
 			gameOver()
+>>>>>>> ea31c0e0548f4cb9719e05b3b3543e9dcbcc30ba
 			
 		}
 	}
@@ -547,6 +552,15 @@ document.addEventListener('DOMContentLoaded',() => {
 
 
 
+<<<<<<< HEAD
+	startButton.addEventListener('click', () =>{
+		if(timerId){
+			clearInterval(timerId)
+			timerId = null
+		}
+		else {
+			timerId = setInterval(moveDown,350)
+=======
 	var musicOff = false;
 
 	startButton.addEventListener('click', () =>{
@@ -563,6 +577,7 @@ document.addEventListener('DOMContentLoaded',() => {
                 		music.play();
             		}
 			
+>>>>>>> ea31c0e0548f4cb9719e05b3b3543e9dcbcc30ba
 		}
 		if(!started){
 			moveDown()
@@ -574,6 +589,26 @@ document.addEventListener('DOMContentLoaded',() => {
 
 
 // CORBIN'S VOLUME CONTROLS
+<<<<<<< HEAD
+	// musicMaster.addEventListener('click', () =>{
+	// 	if(!musicOff){
+	//     		musicOff = true;
+	//     		music.pause();
+	// 	}
+	// 	else{
+	//     		musicOff = false;
+	//     		music.play();
+	// 	}
+ //    	})
+
+	// volU.addEventListener('click', () =>{
+	// 	music.volume += 0.1
+	// })
+
+	// volD.addEventListener('click', () =>{
+	// 	music.volume -= 0.1
+	// })
+=======
 	musicMaster.addEventListener('click', () =>{
 		if(!musicOff){
 	    		musicOff = true;
@@ -592,6 +627,7 @@ document.addEventListener('DOMContentLoaded',() => {
 	volD.addEventListener('click', () =>{
 		music.volume -= 0.1
 	})
+>>>>>>> ea31c0e0548f4cb9719e05b3b3543e9dcbcc30ba
 
 
 
@@ -603,6 +639,43 @@ document.addEventListener('DOMContentLoaded',() => {
 
 
 
+<<<<<<< HEAD
+	// function addScore() {
+	// 	var i
+	// 	var j
+	// 	for (i = 0; i < 199; i+=width) {
+	// 		const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9]
+	// 		if(row.every(index => squares[index].classList.contains('taken'))){
+	// 			score +=10
+	// 			scoreDisplay.innerHTML = score
+	// 			row.forEach(index => {
+	// 				squares[index].classList.remove('taken')
+	// 				squares[index].classList.remove('tetro')
+	// 				for (j = 0; j<colours.length; j++){
+	// 					squares[index].classList.remove(colours[j])
+	// 				}
+	// 			})
+	// 			// removes row from squares and saves it in squaresRemoved
+	// 			const squaresRemoved = squares.splice(i, width)
+	// 			// appends squares to the bottom of squaresRemoved
+	// 			squares = squaresRemoved.concat(squares)
+	// 			squares.forEach(cell => grid.appendChild(cell))
+
+	// 		}
+	// 	}
+	// }
+
+
+	// function gameOver() {
+	// 	if(current.some(index=> squares[currentPosition + index].classList.contains('taken'))){
+	// 		gameEnd.innerHTML = 'GAME OVER!!!'
+	// 		// scoreDisplay.innerHTML = ''
+	// 		clearInterval(timerId)
+	// 		timerId = null
+	// 		music.pause();
+	// 	}
+	// }
+=======
 	function addScore() {
 		var i
 		var j
@@ -638,6 +711,7 @@ document.addEventListener('DOMContentLoaded',() => {
 			music.pause();
 		}
 	}
+>>>>>>> ea31c0e0548f4cb9719e05b3b3543e9dcbcc30ba
 
 })
 

@@ -1,0 +1,137 @@
+/*This imports a font from Google*/
+/*You can find this font at https://fonts.google.com/specimen/Press+Start+2P*/
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+
+/*This formats the div with the id "maingrid" which is our game's main display.*/
+#maingrid {
+	/*20 rows X 20px per square*/
+	height: 400px;
+	/*10 columns X 20px per square*/
+	width: 200px;
+	/*background colour for game*/
+	background-color: #474342;
+	/*Normally, one div would display on each line and take up the whole line.
+	These two lines allow us to have each div inside "maingrid" display next to each other.
+	A new line starts when the divs occupy all of the 200px width.*/
+	display: flex;
+	flex-wrap: wrap;
+}
+
+/*This formats the divs inside the div with the id "maingrid".*/
+/*#maingrid div finds the "maingrid", then format elements inside it which are div*/
+#maingrid div {
+	/*Each div inside "maingrid" represents one square with a height and width of 20px.*/
+	width: 20px;
+	height: 20px;
+}
+
+/*This formats the div with the id "minigrid" with is the display for the NEXT UP block.*/
+#minigrid {
+	/*4 rows X 20px per square*/
+	height: 80px;
+	/*4 columns X 20px per square*/
+	width: 80px;
+	/*background colour*/
+	background-color: #474342;
+	/*Allows divs to be next to each other instead of each occupying one line.*/
+	display: flex;
+	flex-wrap: wrap;
+	/*Adds space to the left of the NEXT UP display so that it isn't touching the game*/
+	margin-left: 25px;
+}
+
+/*This formats the divs inside the div with the id "minigrid".*/
+#minigrid div{
+	/*Each div inside "minigrid" represents one square with a height and width of 20px.*/
+	width: 20px;
+	height: 20px;
+}
+
+
+#container{
+	/*Allows divs to be next to each other instead of each occupying one line.
+	The "maingrid" div would normally be on top of the "minigrid" div.
+	This allows them to appear side by side*/
+	display: flex;
+}
+
+#musiccontrols{
+    font-size: 0;
+}
+
+.musiconoff{
+    display: block;
+    height: 50px;
+}
+
+.musicvolume{
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+}
+
+/*Puts in the game in the center of the page*/
+body {
+	/*Normally, the body takes the full width of the page.
+	This line limits the body to 350px (our game is about 300px wide).*/
+	max-width: 350px;
+	/*Adds margins (space) to both sides to center the body element.
+	If the body element is the full width of the page, this does nothing because there is nowhere to add space.
+	This is why we limited the body to 350px.*/
+	margin: auto;
+	/*Adds a background image call "tetris.jpg" behind the game.*/
+	background-image: url("tetris.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	/*This changes the font of the text inside the body element*/
+	font-family: 'Press Start 2P', cursive;
+	color: white;
+}
+
+button {
+	background-color: #f54275;
+	color: white;
+	font-family: 'Press Start 2P', cursive;
+	width: 200px;
+}
+
+h3 {
+	background-color: #f54275;
+	width: 200px;
+	text-align: center;
+}
+
+
+
+
+/*Colours for each tetromino*/
+.cyan {
+	background-color: #4de3e3;
+	box-shadow:inset 0px 0px 0px 1px #212224;
+}
+.yellow{
+	background-color: #f0cc1a;
+	box-shadow:inset 0px 0px 0px 1px #212224;
+}
+.magenta{
+	background-color: #d111ce;
+	box-shadow:inset 0px 0px 0px 1px #212224;
+}
+.blue{
+	background-color: #1821d9;
+	box-shadow:inset 0px 0px 0px 1px #212224;
+}
+.orange{
+	background-color: #f2930f;
+	box-shadow:inset 0px 0px 0px 1px #212224;
+}
+.lime{
+	background-color: #1bcf0e;
+	box-shadow:inset 0px 0px 0px 1px #212224;
+}
+.red{
+	background-color: #cf180e;
+	box-shadow:inset 0px 0px 0px 1px #212224;
+}

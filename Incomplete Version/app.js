@@ -260,9 +260,10 @@ document.addEventListener('DOMContentLoaded',() => {
 
 	//colour is which random colour is selected from the colours array
     let colour = colours[random]
+    let nextColour = colours[nextRandom]
     // current is an array of indexes for the main grid for each square in the tetromino
     let current = tetros[random][currentRotation]
-
+    let started = false
 	/*
 	Activity: log which colour and tetromino is selected to confirm everything is working
 	console.log(colour)
@@ -311,7 +312,10 @@ document.addEventListener('DOMContentLoaded',() => {
 			currentPosition = 4
 			//getting the new random colour and drawing the new tetromino
 			colour = colours[random]
+			miniDraw()
 			draw()
+			addScore()
+			gameOver()
 		}
 	}
 
@@ -330,7 +334,7 @@ document.addEventListener('DOMContentLoaded',() => {
 	}
 
 	//setInterval calls the function moveDown every 1000 milliseconds
-	setInterval(moveDown, 1000)
+	//setInterval(moveDown, 1000)
 
 	function moveLeft() {
 		undraw()

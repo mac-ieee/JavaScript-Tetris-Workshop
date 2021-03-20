@@ -556,6 +556,10 @@ document.addEventListener('DOMContentLoaded',() => {
 		else {
 			timerId = setInterval(moveDown,350)
 		}
+		if (!started){
+			miniDraw()
+			started = true
+		}
 	})
 
 

@@ -299,9 +299,9 @@ document.addEventListener('DOMContentLoaded',() => {
 			currentPosition = 4
 			currentRotation = 0
 			colour = colours[random]
-			miniDraw()
-			addScore()
-			gameOver()
+// 			miniDraw()
+// 			addScore()
+// 			gameOver()
 			
 		}
 	}

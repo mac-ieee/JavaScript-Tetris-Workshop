@@ -1,16 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // var i;
-    // // This for loop creates a div and adds it inside "maingrid", repeating this 200 times.
-    // for (i = 0; i < 200; i++) {
-    //     var block = document.createElement("div")
-    //     document.getElementById("maingrid").appendChild(block)
-    // }
-    // // This for loop creates a div, gives it the class "taken", and adds it inside "maingrid", repeating this 10 times.
-    // for (i = 0; i < 10; i++) {
-    //     var block = document.createElement("div")
-    //     block.className = 'taken'
-    //     document.getElementById("maingrid").appendChild(block)
-    // }
+    var i;
+    // This for loop creates a div and adds it inside "maingrid", repeating this 200 times.
+    for (i = 0; i < 200; i++) {
+        var block = document.createElement("div")
+        document.getElementById("maingrid").appendChild(block)
+    }
+    // This for loop creates a div, gives it the class "taken", and adds it inside "maingrid", repeating this 10 times.
+    for (i = 0; i < 10; i++) {
+        var block = document.createElement("div")
+        block.className = 'taken'
+        document.getElementById("maingrid").appendChild(block)
+    }
     // For our NEXT UP display, we need to create 16 divs and add it to the div with the "minigrid" id.
     // Try doing this with a for loop like the examples above.
     // TYPE BELOW___________________________________________________________________________________________________________________________

@@ -471,7 +471,7 @@ document.addEventListener('DOMContentLoaded',() => {
 	// 	})
 	// }
 
-
+setInterval(moveDown,350)
 
 
 
@@ -547,21 +547,21 @@ document.addEventListener('DOMContentLoaded',() => {
 
 
 
-	startButton.addEventListener('click', () =>{
-		if(timerId){
-			clearInterval(timerId)
-			timerId = null
-		}
-		else {
-			timerId = setInterval(moveDown,350)
-		}
-		if(!started){
-			moveDown()
-			started = true
-			nextRandom = Math.floor(Math.random()*tetros.length)
-			miniDraw()
-		}
-	})
+// 	startButton.addEventListener('click', () =>{
+// 		if(timerId){
+// 			clearInterval(timerId)
+// 			timerId = null
+// 		}
+// 		else {
+// 			timerId = setInterval(moveDown,350)
+// 		}
+// 		if(!started){
+// 			moveDown()
+// 			started = true
+// 			nextRandom = Math.floor(Math.random()*tetros.length)
+// 			miniDraw()
+// 		}
+// 	})
 
 
 // CORBIN'S VOLUME CONTROLS

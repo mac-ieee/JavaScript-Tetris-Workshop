@@ -398,7 +398,7 @@ document.addEventListener('DOMContentLoaded',() => {
 	// passes function 'control' to event listener on a keypress
 	document.addEventListener('keyup',control)
 
-	// timerID = setInterval(moveDown,100)
+	setInterval(moveDown,100)
 
 
 
